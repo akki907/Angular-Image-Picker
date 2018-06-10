@@ -1,28 +1,23 @@
-<div class="row">
-  <div class="jumbotron" style="padding:20px;">
-    <input type="file" (change)="showPreviewImage($event)">
-    <img style="width:50% ;height:50%;" id="bannerImage" [src]="localUrl" *ngIf="localUrl" class="imgPlaceholder">
+<div style="margin-top:20px">
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container text-center">
+      <input class="custom-file-upload" accept="image/*" type="file" (change)="showPreviewImage($event)">
 
-    <button class="btn btn-success" *ngIf="localUrl" (click)='uploadImagetoStorageContainer()'>Upload</button>
+      <button class="btn btn-success" *ngIf="localUrl" (click)='uploadImagetoStorageContainer()'>Upload</button>
+      <img class="rounded-circle" style="width:10% ;height:10%;" id="bannerImage" [src]="localUrl" *ngIf="localUrl">
+    </div>
   </div>
-  <hr>
-
-  <!-- <div class="row ">
-      <div  [dragula]='"first-bag"' class="gallery cardImage" *ngFor="let img of image">
-        <img [src]="img">
-      </div>
-    </div> -->
 </div>
 
-<div style="padding:30px" class="row">
-  <div class='wrapper'>
+<div style="padding:30px" class="row" *ngIf="image.length">
+  <div class='card'>
     <div class='container' [dragula]='"first-bag"'>
-      <div class="gallery cardImage" *ngFor="let img of image">
-        <img [src]="img">
+      <div class="gallery  cardImage" *ngFor="let img of image">
+        <img class="" [src]="img">
+        <button style="margin:5px;" (click)="deleteImage(img)" class="btn btn-danger roundButton">
+          <i class="fa fa-trash" aria-hidden="true"></i>
+        </button>
       </div>
     </div>
-    <!-- <div class='container' [dragula]='"first-bag"'>
-  
-      </div> -->
   </div>
 </div>

@@ -12,11 +12,10 @@ export class ImagePickerComponent implements OnInit {
   @ViewChild("myCanvas") myCanvas: ElementRef;
   public context: CanvasRenderingContext2D;
 
-  public filesToUpload;
-  public url;
   localUrl;
   image;
   constructor(private dragulaService: DragulaService) {}
+
   uploadImagetoStorageContainer() {
     let bannerImage = document.getElementById("bannerImage");
     const imgData = this.getBase64Image(bannerImage);
@@ -31,7 +30,21 @@ export class ImagePickerComponent implements OnInit {
       localStorage.setItem("imgDatas", JSON.stringify(data));
     }
     this.getLocalStorageImage();
-    this.localUrl = ''
+    // this.localUrl = ''
+    window.location.reload();
+  }
+
+  deleteImage(image){
+    const localStorageImage = JSON.parse(localStorage.getItem("imgDatas"));
+    let index = localStorageImage.indexOf(image)
+    if(index == -1){
+      console.log('not present in localStorage.')
+    }else{
+      localStorageImage.splice(index,1)
+      localStorage.setItem("imgDatas", JSON.stringify(localStorageImage));
+      this.getLocalStorageImage()
+    }
+
   }
 
 
