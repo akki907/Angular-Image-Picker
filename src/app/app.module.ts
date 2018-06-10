@@ -3,16 +3,24 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import {DragulaModule} from 'ng2-dragula'
+// @ Components
+import { ImagePickerComponent } from './components/image-picker/image-picker.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { UploadModalComponent } from './components/upload-modal/upload-modal.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ImagePickerComponent,
+    NavbarComponent,
+    UploadModalComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,DragulaModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent,]
 })
 export class AppModule { }
